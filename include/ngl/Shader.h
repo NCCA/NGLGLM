@@ -1,0 +1,126 @@
+/*
+  Copyright (C) 2009 Jon Macey
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#ifndef SHADER_H_
+#define SHADER_H_
+
+#include "Types.h"
+
+#include <iostream>
+#include <cstdlib>
+namespace nglglm
+{
+
+
+/// @enum Type of shader this object is
+// for c++ 11 use enum class at present internal only
+enum  class ShaderType : char {VERTEX,FRAGMENT,GEOMETRY,TESSCONTROL,TESSEVAL,COMPUTE,NONE};
+/// @class Shader
+/// @brief and encapsulation of an OpenGL Shader object with
+/// associations for source code, etc.
+/// Used in conjunction with the ShaderProgram class
+/// @author Jonathan Macey
+/// @version 1.0
+/// @date 24/11/10
+//----------------------------------------------------------------------------------------------------------------------
+
+class NGL_DLLEXPORT Shader
+{
+public :
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief ctor
+  /// @param _name the name of the program object
+  /// @param[in] _type the type of shader we are building
+  //----------------------------------------------------------------------------------------------------------------------
+  Shader( std::string _name,  ShaderType _type ) noexcept;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief dtor, will clean up shader source and remove shader from GL
+  //----------------------------------------------------------------------------------------------------------------------
+  ~Shader();
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief compile the current shader will check to see if source
+  /// is attached and issue warning if not
+  //----------------------------------------------------------------------------------------------------------------------
+  void compile() noexcept;
+  /// @brief load in shader source and attach it to the shader object
+  /// if source is already loaded it will re-load and re-attached
+  /// @param _name the file name for the source we are loading
+  //----------------------------------------------------------------------------------------------------------------------
+  void load( std::string _name ) noexcept;
+   //----------------------------------------------------------------------------------------------------------------------
+  void loadFromString(const std::string &_string  ) noexcept;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief toggle the debug state
+  //----------------------------------------------------------------------------------------------------------------------
+  void toggleDebug() noexcept {m_debugState ^=true;}
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief get the shader handle for this shader
+  /// @return the hand for this shader
+  //----------------------------------------------------------------------------------------------------------------------
+  GLuint getShaderHandle()const noexcept {return m_shaderHandle;}
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief increment the shader ref count so we can see how many
+  /// program objects are using this shader
+  //----------------------------------------------------------------------------------------------------------------------
+  void incrementRefCount() noexcept { ++m_refCount;}
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief decrement the reference counteer
+  //----------------------------------------------------------------------------------------------------------------------
+  void decrementRefCount() noexcept { --m_refCount;}
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief return the number of ProgramObjects referencing this shader
+  /// @returns the number of references
+  //----------------------------------------------------------------------------------------------------------------------
+  int getRefCount()const  noexcept { return m_refCount; }
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief the shader source
+  /// @returns the shader source
+  //----------------------------------------------------------------------------------------------------------------------
+  const std::string  getShaderSource() const noexcept {return m_source;}
+
+private :
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief the text name of this Shader used in the search for shader
+  //----------------------------------------------------------------------------------------------------------------------
+  std::string m_name;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief the actual source code for this shader (used for debug and initial loading)
+  //----------------------------------------------------------------------------------------------------------------------
+  std::string m_source;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief flag to indicate if the shader has been compiled
+  /// this will get channged on re-load of source to false
+  //----------------------------------------------------------------------------------------------------------------------
+  bool m_compiled;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief what type of shader we are
+  //----------------------------------------------------------------------------------------------------------------------
+  ShaderType m_shaderType;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief the GL handle for this shader object used in linking etc
+  //----------------------------------------------------------------------------------------------------------------------
+  GLuint m_shaderHandle;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief flag to indicate the debug state
+  //----------------------------------------------------------------------------------------------------------------------
+  bool m_debugState;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief number of ProgramObjects referencing this shader
+  //----------------------------------------------------------------------------------------------------------------------
+  int m_refCount;
+};
+} // end NGL namespace
+#endif
