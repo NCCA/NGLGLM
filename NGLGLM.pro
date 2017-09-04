@@ -6,6 +6,7 @@ isEqual(QT_MAJOR_VERSION, 5) {cache() }
 
 # We will use the built in Qt lib template
 TEMPLATE = lib
+CONFIG+=shared_and_static build_all
 QT += opengl
 QT += core
 QT += gui
@@ -143,7 +144,15 @@ SOURCES += 		$$SRC_DIR/ShaderLib.cpp \
 		$$SRC_DIR/NGLInit.cpp \
 		$$SRC_DIR/Shader.cpp \
     $$SRC_DIR/ShaderProgram.cpp \
-    $$SRC_DIR/Util.cpp
+    $$SRC_DIR/Util.cpp \
+    $$SRC_DIR/AbstractVAO.cpp \
+    $$SRC_DIR/SimpleVAO.cpp \
+    $$SRC_DIR/SimpleIndexVAO.cpp \
+    $$SRC_DIR/MultiBufferVAO.cpp \
+    $$SRC_DIR/createDefaultVAOs.cpp  \
+    $$SRC_DIR/VAOFactory.cpp \
+    $$SRC_DIR/VAOPrimitives.cpp
+
 #exclude this from iOS
 win32|unix|macx:{
 	SOURCES+=glew/glew.c
@@ -163,6 +172,12 @@ HEADERS += $$INC_DIR/Singleton.h \
 		$$INC_DIR/NGLInit.h \
 		$$INC_DIR/Shader.h \
     $$INC_DIR/Util.h \
+    $$INC_DIR/AbstractVAO.h \
+    $$INC_DIR/MultiBufferVAO.h \
+    $$INC_DIR/SimpleIndexVAO.h \
+    $$INC_DIR/SimpleVAO.h \
+    $$INC_DIR/VAOFactory.h \
+    $$INC_DIR/VAOPrimitives.h \
 		$$INC_DIR/ShaderProgram.h \
 		$$SRC_DIR/shaders/TextShaders.h \
 		$$SRC_DIR/shaders/ColourShaders.h \

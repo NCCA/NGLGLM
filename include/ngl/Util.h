@@ -103,6 +103,30 @@ extern NGL_DLLEXPORT Real radians(const Real _deg ) noexcept;
 //----------------------------------------------------------------------------------------------------------------------
 extern NGL_DLLEXPORT Real degrees( const Real _rad ) noexcept;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+/// @brief return a glm matrix as a rotation in degrees
+/// @param[in]  _deg
+/// @returns a rotation matrix in a X
+//----------------------------------------------------------------------------------------------------------------------
+extern NGL_DLLEXPORT glm::mat4 rotateX( const Real _deg ) noexcept;
+
+//----------------------------------------------------------------------------------------------------------------------
+/// @brief return a glm matrix as a rotation in degrees
+/// @param[in]  _deg
+/// @returns a rotation matrix in a X
+//----------------------------------------------------------------------------------------------------------------------
+extern NGL_DLLEXPORT glm::mat4 rotateY( const Real _deg ) noexcept;
+
+//----------------------------------------------------------------------------------------------------------------------
+/// @brief return a glm matrix as a rotation in degrees
+/// @param[in]  _deg
+/// @returns a rotation matrix in a X
+//----------------------------------------------------------------------------------------------------------------------
+extern NGL_DLLEXPORT glm::mat4 rotateZ( const Real _deg ) noexcept;
+
+
+
 //----------------------------------------------------------------------------------------------------------------------
 /// @brief returns if value is a power of 2
 /// @param[in]  _x value to check

@@ -142,10 +142,9 @@ constexpr float  EPSILON = 0.001f;
 
  #define NGL_UNUSED(arg) (void)arg;
 
-//constexpr auto simpleVAO="simpleVAO";
-////constexpr auto SimpleVAO="simpleVAO";
-//constexpr auto multiBufferVAO="multiBufferVAO";
-//constexpr auto simpleIndexVAO="simpleIndexVAO";
+constexpr auto simpleVAO="simpleVAO";
+constexpr auto multiBufferVAO="multiBufferVAO";
+constexpr auto simpleIndexVAO="simpleIndexVAO";
 
 
 

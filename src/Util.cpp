@@ -155,7 +155,51 @@ NGL_DLLEXPORT unsigned int nextPow2(unsigned int _x) noexcept
 }
 
 
+extern NGL_DLLEXPORT glm::mat4 rotateX( const Real _deg ) noexcept
+{
+  glm::mat4 m;
+  Real beta=radians(_deg);
+  Real sr = sinf( beta );
+  Real cr = cosf( beta );
+  m[1][1] =  cr;
+  m[2][1] = -sr;
+  m[1][2] =  sr;
+  m[2][2] =  cr;
+  return m;
+}
+
+extern NGL_DLLEXPORT glm::mat4 rotateY( const Real _deg ) noexcept
+{
+  glm::mat4 m;
+  Real beta=radians(_deg);
+  Real sr = sinf( beta );
+  Real cr = cosf( beta );
+  m[0][0] =  cr;
+  m[2][0] =  sr;
+  m[0][2] = -sr;
+  m[2][2] =  cr;
+  return m;
+}
+
+extern NGL_DLLEXPORT glm::mat4 rotateZ( const Real _deg ) noexcept
+{
+  glm::mat4 m;
+  Real beta=radians(_deg);
+  Real sr = sinf( beta );
+  Real cr = cosf( beta );
+  m[0][0] =  cr;
+  m[1][0] = -sr;
+  m[0][1] =  sr;
+  m[1][1] =  cr;
+  return m;
+}
+
 } // end of namespace
+
+
+
+
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
