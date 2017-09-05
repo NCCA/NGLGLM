@@ -150,6 +150,13 @@ SOURCES += 		$$SRC_DIR/ShaderLib.cpp \
     $$SRC_DIR/SimpleIndexVAO.cpp \
     $$SRC_DIR/MultiBufferVAO.cpp \
     $$SRC_DIR/createDefaultVAOs.cpp  \
+    $$SRC_DIR/Obj.cpp \
+    $$SRC_DIR/Transformation.cpp \
+    $$SRC_DIR/BBox.cpp \
+    $$SRC_DIR/Text.cpp \
+    $$SRC_DIR/AbstractMesh.cpp \
+    $$SRC_DIR/Texture.cpp \
+    $$SRC_DIR/Image.cpp \
     $$SRC_DIR/VAOFactory.cpp \
     $$SRC_DIR/VAOPrimitives.cpp
 
@@ -174,6 +181,13 @@ HEADERS += $$INC_DIR/Singleton.h \
     $$INC_DIR/Util.h \
     $$INC_DIR/AbstractVAO.h \
     $$INC_DIR/MultiBufferVAO.h \
+    $$INC_DIR/Obj.h \
+    $$INC_DIR/BBox.h \
+    $$INC_DIR/Text.h \
+    $$INC_DIR/Texture.h\
+    $$INC_DIR/Transformation.h \
+    $$INC_DIR/Image.h \
+    $$INC_DIR/AbstractMesh.h \
     $$INC_DIR/SimpleIndexVAO.h \
     $$INC_DIR/SimpleVAO.h \
     $$INC_DIR/VAOFactory.h \

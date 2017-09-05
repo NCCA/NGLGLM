@@ -194,6 +194,16 @@ extern NGL_DLLEXPORT glm::mat4 rotateZ( const Real _deg ) noexcept
   return m;
 }
 
+extern NGL_DLLEXPORT glm::mat4 scale( const Real _x, const Real _y, const Real _z ) noexcept
+{
+  glm::mat4 scale;
+  scale[0][0]=_x;
+  scale[1][1]=_y;
+  scale[2][2]=_z;
+  return scale;
+}
+
+
 } // end of namespace
 
 

@@ -125,6 +125,7 @@ extern NGL_DLLEXPORT glm::mat4 rotateY( const Real _deg ) noexcept;
 //----------------------------------------------------------------------------------------------------------------------
 extern NGL_DLLEXPORT glm::mat4 rotateZ( const Real _deg ) noexcept;
 
+extern NGL_DLLEXPORT glm::mat4 scale( const Real _x, const Real _y, const Real _z ) noexcept;
 
 
 //----------------------------------------------------------------------------------------------------------------------
